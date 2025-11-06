@@ -4,9 +4,11 @@ public class Validator {
     private static final int NUMBER_START = 1;
     private static final int NUMBER_END = 4;
 
-    public void selectNumber(String input) {
+    public int selectNumber(String input) {
         int number = isDigit(input);
         isCorrectNumberRange(number);
+
+        return number;
     }
 
     private void isCorrectNumberRange(int number) {
