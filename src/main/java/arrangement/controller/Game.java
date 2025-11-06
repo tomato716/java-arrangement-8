@@ -21,7 +21,8 @@ public class Game {
 
     }
 
-    private int startChoice() {
+
+    private int askOption() {
         while (true) {
             try {
                 output.printStart();
