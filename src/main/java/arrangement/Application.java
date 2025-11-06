@@ -1,10 +1,13 @@
 package arrangement;
 
-import arrangement.view.Input;
+import arrangement.controller.Game;
+import arrangement.model.Validator;
+import arrangement.view.Output;
 
 public class Application {
 
     public static void main(String[] args) {
-        String console = Input.console();
+        Game game = new Game(new Output(), new Validator());
+        game.play();
     }
 }
