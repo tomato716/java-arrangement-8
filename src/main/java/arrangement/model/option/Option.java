@@ -1,5 +1,5 @@
 package arrangement.model.option;
 
 public interface Option {
-    public void start();
+    public void play();
 }
