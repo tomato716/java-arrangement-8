@@ -8,9 +8,9 @@ public class Game {
     private final Input input;
     private final Output output;
 
-    public Game() {
-        this.input = new Input();
-        this.output = new Output();
+    public Game(Input input, Output output) {
+        this.input = input;
+        this.output = output;
     }
 
     public void play() {
