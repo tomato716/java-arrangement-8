@@ -16,6 +16,8 @@ public class Output {
         System.out.println("번호를 선택해주세요.");
         System.out.println("1. 재고 보기");
         System.out.println("2. 미션 보기");
+        System.out.println("3. 현재 금액 보기");
+        System.out.println("4. 오늘 일과 종료");
 
     }
 }
