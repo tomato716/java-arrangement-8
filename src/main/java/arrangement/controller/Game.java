@@ -15,9 +15,22 @@ public class Game {
     }
 
     public void play() {
-        output.printStart();
-        String input = Input.console();
-        validator.selectNumber(input);
+        int choiceNumber = startChoice();
+        System.out.println(choiceNumber);
+
+
+    }
+
+    private int startChoice() {
+        while (true) {
+            try {
+                output.printStart();
+                String input = Input.console();
+                return validator.selectNumber(input);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
 
     }
 }
