@@ -1,7 +1,7 @@
 package arrangement.controller;
 
 import arrangement.model.Validator;
-import arrangement.model.meat.OptionSelector;
+import arrangement.model.option.OptionSelector;
 import arrangement.model.option.Option;
 import arrangement.view.Input;
 import arrangement.view.Output;
