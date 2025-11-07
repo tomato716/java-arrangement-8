@@ -19,23 +19,22 @@ public class Game {
     }
 
     public void play() {
-        int optionNumber = askOption();
-        Option option = optionSelector.select(optionNumber);
+        Option option = askOption();
         option.play();
 
     }
 
 
-    private int askOption() {
+    private Option askOption() {
         while (true) {
             try {
                 output.printStart();
                 String input = Input.console();
-                return validator.selectNumber(input);
+                int optionNumber = validator.selectNumber(input);
+                return optionSelector.select(optionNumber);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
         }
-
     }
 }
