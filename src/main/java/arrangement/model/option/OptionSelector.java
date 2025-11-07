@@ -1,7 +1,5 @@
-package arrangement.model.meat;
+package arrangement.model.option;
 
-import arrangement.model.option.MissionOption;
-import arrangement.model.option.Option;
 import java.util.ArrayList;
 import java.util.List;
 
