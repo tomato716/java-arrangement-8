@@ -1,21 +1,16 @@
 package arrangement.model.option;
 
 import arrangement.model.Category;
+import arrangement.model.Inventory;
 import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
 
 public class InventoryOption implements Option {
-    private final Map<Category, Map<String, Integer>> inventory = new EnumMap<>(Category.class);
+    private final Inventory inventory;
 
-    public InventoryOption() {
-        createInventory();
-    }
-
-    private void createInventory() {
-        for (Category category : Category.values()) {
-            inventory.put(category, new HashMap<>());
-        }
+    public InventoryOption(Inventory inventory) {
+        this.inventory = inventory;
     }
 
     @Override
@@ -26,9 +21,11 @@ public class InventoryOption implements Option {
     }
 
     private void showInventory() {
-        for (Category category : inventory.keySet()) {
+        Map<Category, Map<String, Integer>> myInventory = inventory.getInventory();
+
+        for (Category category : myInventory.keySet()) {
             System.out.print(category + ": ");
-            showCategoryItem(inventory.get(category));
+            showCategoryItem(myInventory.get(category));
             System.out.println();
         }
     }
