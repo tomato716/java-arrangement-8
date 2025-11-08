@@ -12,6 +12,6 @@ public class IncomeOption implements Option {
     @Override
     public void play() {
         System.out.println("--- 현재 수입 ---");
-        System.out.println(String.format("%,d원", income.getIncome()));
+        System.out.printf("%,d원%n", income.getIncome());
     }
 }
