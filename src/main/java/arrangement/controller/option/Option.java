@@ -1,4 +1,4 @@
-package arrangement.model.option;
+package arrangement.controller.option;
 
 public interface Option {
     void play();

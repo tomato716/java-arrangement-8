@@ -1,4 +1,4 @@
-package arrangement.model.option;
+package arrangement.controller.option;
 
 import arrangement.model.Inventory;
 import java.util.ArrayList;

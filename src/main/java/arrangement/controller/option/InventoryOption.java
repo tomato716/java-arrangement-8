@@ -1,9 +1,7 @@
-package arrangement.model.option;
+package arrangement.controller.option;
 
 import arrangement.model.Category;
 import arrangement.model.Inventory;
-import java.util.EnumMap;
-import java.util.HashMap;
 import java.util.Map;
 
 public class InventoryOption implements Option {
