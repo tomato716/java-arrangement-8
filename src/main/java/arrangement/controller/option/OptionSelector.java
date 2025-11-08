@@ -1,5 +1,6 @@
 package arrangement.controller.option;
 
+import arrangement.model.Income;
 import arrangement.model.Inventory;
 import arrangement.model.Mission;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ public class OptionSelector {
     public OptionSelector() {
         selector.add(new InventoryOption(new Inventory()));
         selector.add(new MissionOption(new Mission()));
+        selector.add(new IncomeOption(new Income()));
     }
 
     public Option select(int number) {
