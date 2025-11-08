@@ -1,5 +1,7 @@
 package arrangement.controller;
 
+import arrangement.model.GameState;
+import arrangement.model.Income;
 import arrangement.model.Validator;
 import arrangement.controller.option.OptionSelector;
 import arrangement.controller.option.Option;
@@ -11,11 +13,15 @@ public class Game {
     private final Output output;
     private final Validator validator;
     private final OptionSelector optionSelector;
+    private final GameState gameState;
+    private final Income income;
 
-    public Game(Output output, Validator validator, OptionSelector optionSelector) {
+    public Game(Output output, Validator validator, OptionSelector optionSelector, GameState gameState, Income income) {
         this.output = output;
         this.validator = validator;
         this.optionSelector = optionSelector;
+        this.gameState = gameState;
+        this.income = income;
     }
 
     public void play() {
