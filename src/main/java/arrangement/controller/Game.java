@@ -25,9 +25,12 @@ public class Game {
     }
 
     public void play() {
-        Option option = askOption();
-        option.play();
-
+        while (gameState.getState()) {
+            Option option = askOption();
+            option.play();
+        }
+        System.out.println("--- 일과 종료 ---");
+        System.out.println("최종 수입: " + income.getIncome() + "원");
     }
 
 
