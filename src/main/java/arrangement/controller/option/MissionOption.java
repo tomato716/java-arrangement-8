@@ -27,7 +27,7 @@ public class MissionOption implements Option {
                 System.out.println("카테고리 별로 정리하세요.");
                 System.out.println("입력은 {카테고리} - {정리할 물품},{정리할 물품}으로 입력해주세요.");
                 String input = Input.console();
-                validator.inputCategoryItem(input);
+                String[] strings = validator.splitCategoryItem(input);
                 mission.removeMission(input);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
