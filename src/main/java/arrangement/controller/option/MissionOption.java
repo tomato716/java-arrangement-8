@@ -1,13 +1,16 @@
 package arrangement.controller.option;
 
 import arrangement.model.Mission;
+import arrangement.model.Validator;
 import arrangement.view.Input;
 
 public class MissionOption implements Option {
     private final Mission mission;
+    private final Validator validator;
 
-    public MissionOption(Mission mission) {
+    public MissionOption(Mission mission, Validator validator) {
         this.mission = mission;
+        this.validator = validator;
     }
 
     @Override
@@ -22,7 +25,9 @@ public class MissionOption implements Option {
             try {
                 mission.showMission();
                 System.out.println("카테고리 별로 정리하세요.");
+                System.out.println("입력은 {카테고리} - {정리할 물품},{정리할 물품}으로 입력해주세요.");
                 String input = Input.console();
+                validator.inputCategoryItem(input);
                 mission.removeMission(input);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
