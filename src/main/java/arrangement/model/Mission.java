@@ -33,7 +33,7 @@ public class Mission {
         }
     }
 
-    public int size() {
+    public int itemCount() {
         return mission.size();
     }
 }
