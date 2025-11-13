@@ -4,18 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Mission {
-    private final List<String> mission = new ArrayList<>();
+    private final MissionItem missionItem;
+    private List<String> mission;
 
-    public Mission() {
-        mission.add("소고기");
-        mission.add("콜라");
-        mission.add("상추");
-        mission.add("사이다");
-        mission.add("사과");
-        mission.add("돼지고기");
-        mission.add("깻잎");
-        mission.add("키위");
-        mission.add("파인애플");
+
+    public Mission(MissionItem missionItem) {
+        this.missionItem = missionItem;
+    }
+
+    public void createMission() {
+        if (mission == null || mission.isEmpty()) {
+            mission = new ArrayList<>(missionItem.create());
+        }
     }
 
     public void showMission() {
