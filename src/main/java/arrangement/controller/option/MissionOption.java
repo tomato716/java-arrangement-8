@@ -21,7 +21,8 @@ public class MissionOption implements Option {
     }
 
     private void removeMission() {
-        while (mission.size() != 0) {
+        mission.createMission();
+
         while (mission.itemCount() != 0) {
             try {
                 mission.showMission();
