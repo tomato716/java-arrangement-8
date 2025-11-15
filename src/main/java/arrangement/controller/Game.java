@@ -16,12 +16,13 @@ public class Game {
     private final GameState gameState;
     private final Income income;
 
-    public Game(Output output, Validator validator, OptionSelector optionSelector, GameState gameState, Income income) {
+    public Game(Output output,
+                OptionSelector optionSelector,
+                GameState gameState) {
         this.output = output;
         this.validator = validator;
         this.optionSelector = optionSelector;
         this.gameState = gameState;
-        this.income = income;
     }
 
     public void play() {
@@ -29,8 +30,6 @@ public class Game {
             Option option = askOption();
             option.play();
         }
-        System.out.println("--- 일과 종료 ---");
-        System.out.println("최종 수입: " + income.getIncome() + "원");
     }
 
 
