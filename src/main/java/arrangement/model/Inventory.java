@@ -31,4 +31,9 @@ public class Inventory {
     public Map<Category, Map<String, Integer>> getInventory() {
         return inventory;
     }
+
+    public void addItem(Category category, String item) {
+        Map<String, Integer> categoryInventory = inventory.get(category);
+        categoryInventory.merge(item, 1, Integer::sum);
+    }
 }
