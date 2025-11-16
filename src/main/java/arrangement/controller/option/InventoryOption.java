@@ -2,6 +2,8 @@ package arrangement.controller.option;
 
 import arrangement.model.Category;
 import arrangement.model.Inventory;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Map;
 
 public class InventoryOption implements Option {
@@ -28,10 +30,14 @@ public class InventoryOption implements Option {
         System.out.println();
     }
 
-    private void showCategoryItem(Map<String, Integer> categoryItem) {
+    private String showCategoryItem(Map<String, Integer> categoryItem) {
+        List<String> categoryItems = new ArrayList<>();
+
         for (String value : categoryItem.keySet()) {
-            System.out.print(value + " - " + categoryItem.get(value) + "개");
+            categoryItems.add(value + " - " + categoryItem.get(value) + "개");
         }
+
+        return String.join(", ", categoryItems);
     }
 
 
