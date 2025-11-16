@@ -24,15 +24,4 @@ public class Validator {
             throw new IllegalArgumentException("[ERROR] 숫자를 입력하세요.");
         }
     }
-
-    public String[] splitCategoryItem(String input) {
-        isHaveDash(input);
-        return input.split("-");
-    }
-
-    private void isHaveDash(String input) {
-        if (!input.contains("-")) {
-            throw new IllegalArgumentException("[ERROR] 잘못입력하셨습니다.");
-        }
-    }
 }
