@@ -16,8 +16,11 @@ public enum Category {
         this.items = items;
     }
 
-    @Override
-    public String toString() {
+    public String getKoreanName() {
         return koreanName;
+    }
+
+    public List<String> getItems() {
+        return items;
     }
 }
