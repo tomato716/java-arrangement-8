@@ -16,9 +16,9 @@ public class Application {
         Income income = new Income();
         Validator validator = new Validator();
         MissionItem missionItem = new RandomMissionItem();
-        Game game = new Game(new Output(), validator, new OptionSelector(gameState, income, validator, missionItem),
-                gameState,
-                income);
+        Output output = new Output();
+
+        Game game = new Game(new OptionSelector(gameState, income, validator, missionItem, output), gameState);
         game.play();
     }
 }

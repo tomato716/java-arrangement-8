@@ -10,17 +10,10 @@ import arrangement.view.Output;
 
 public class Game {
 
-    private final Output output;
-    private final Validator validator;
     private final OptionSelector optionSelector;
     private final GameState gameState;
-    private final Income income;
 
-    public Game(Output output,
-                OptionSelector optionSelector,
-                GameState gameState) {
-        this.output = output;
-        this.validator = validator;
+    public Game(OptionSelector optionSelector, GameState gameState) {
         this.optionSelector = optionSelector;
         this.gameState = gameState;
     }
