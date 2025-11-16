@@ -32,4 +32,8 @@ public enum Category {
         }
         return null;
     }
+
+    public boolean includeItem(String inputItem) {
+        return items.contains(inputItem);
+    }
 }
