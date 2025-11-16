@@ -13,9 +13,20 @@ public class Inventory {
 
     private void createInventory() {
         for (Category category : Category.values()) {
-            inventory.put(category, new HashMap<>());
+            inventory.put(category, createItem(category));
         }
     }
+
+    private Map<String, Integer> createItem(Category category) {
+        Map<String, Integer> items = new HashMap<>();
+
+        for (String item : category.getItems()) {
+            items.put(item, 0);
+        }
+
+        return items;
+    }
+
 
     public Map<Category, Map<String, Integer>> getInventory() {
         return inventory;
