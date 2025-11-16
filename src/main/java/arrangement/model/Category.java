@@ -23,4 +23,13 @@ public enum Category {
     public List<String> getItems() {
         return items;
     }
+
+    public static Category includeCategory(String category) {
+        for (Category value : Category.values()) {
+            if (category.equals(value.name())) {
+                return value;
+            }
+        }
+        return null;
+    }
 }
