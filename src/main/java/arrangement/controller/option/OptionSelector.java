@@ -20,7 +20,20 @@ public class OptionSelector {
         selector.add(new ShutdownOption(new Shutdown(income, gameState)));
     }
 
-    public Option select(int number) {
+    private Option select(int number) {
         return selector.get(number - 1);
+    }
+
+    public Option askOption() {
+        while (true) {
+            try {
+                output.printStart();
+                String input = Input.console();
+                int optionNumber = validator.selectNumber(input);
+                return select(optionNumber);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 }
