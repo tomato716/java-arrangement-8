@@ -22,10 +22,10 @@ public class InventoryOption implements Option {
         Map<Category, Map<String, Integer>> myInventory = inventory.getInventory();
 
         for (Category category : myInventory.keySet()) {
-            System.out.print(category + ": ");
-            showCategoryItem(myInventory.get(category));
-            System.out.println();
+            System.out.print(category.getKoreanName() + ": ");
+            System.out.println(showCategoryItem(myInventory.get(category)));
         }
+        System.out.println();
     }
 
     private void showCategoryItem(Map<String, Integer> categoryItem) {
