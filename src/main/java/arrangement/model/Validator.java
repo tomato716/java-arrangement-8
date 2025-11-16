@@ -1,5 +1,7 @@
 package arrangement.model;
 
+import java.util.List;
+
 public class Validator {
     private static final int NUMBER_START = 1;
     private static final int NUMBER_END = 4;
