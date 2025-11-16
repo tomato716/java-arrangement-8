@@ -7,15 +7,33 @@ import arrangement.model.Mission;
 import arrangement.model.MissionItem;
 import arrangement.model.Shutdown;
 import arrangement.model.Validator;
+import arrangement.view.Input;
+import arrangement.view.Output;
 import java.util.ArrayList;
 import java.util.List;
 
 public class OptionSelector {
     private final List<Option> selector = new ArrayList<>();
+    private final GameState gameState;
+    private final Income income;
+    private final Validator validator;
+    private final MissionItem missionItem;
+    private final Output output;
 
-    public OptionSelector(GameState gameState, Income income, Validator validator, MissionItem missionItem) {
-        selector.add(new InventoryOption(new Inventory()));
-        selector.add(new MissionOption(new Mission(missionItem), validator));
+    public OptionSelector(GameState gameState, Income income, Validator validator, MissionItem missionItem,
+                          Output output) {
+        this.gameState = gameState;
+        this.income = income;
+        this.validator = validator;
+        this.missionItem = missionItem;
+        this.output = output;
+        createOption();
+    }
+
+    private void createOption() {
+        Inventory inventory = new Inventory();
+        selector.add(new InventoryOption(inventory));
+        selector.add(new MissionOption(new Mission(missionItem), inventory));
         selector.add(new IncomeOption(income));
         selector.add(new ShutdownOption(new Shutdown(income, gameState)));
     }
