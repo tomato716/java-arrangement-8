@@ -18,8 +18,8 @@ public class Mission {
         }
     }
 
-    public void showMission() {
-        System.out.println(mission);
+    public List<String> getMission() {
+        return List.copyOf(mission);
     }
 
     public void removeMission(String input) {
