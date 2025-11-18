@@ -18,8 +18,9 @@ public class Application {
         Validator validator = new Validator();
         MissionItem missionItem = new RandomMissionItem();
         Output output = new Output();
-        OptionCreator optionCreator = new OptionCreator(gameState, income, validator, missionItem);
-        Game game = new Game(new OptionSelector(optionCreator, validator, output), gameState);
+        OptionCreator optionCreator = new OptionCreator(gameState, income, validator, missionItem, output);
+        OptionSelector optionSelector = new OptionSelector(optionCreator, validator, output);
+        Game game = new Game(optionSelector, gameState);
 
         game.play();
     }
