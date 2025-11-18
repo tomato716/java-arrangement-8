@@ -1,12 +1,8 @@
 package arrangement.controller;
 
 import arrangement.model.GameState;
-import arrangement.model.Income;
-import arrangement.model.Validator;
 import arrangement.controller.option.OptionSelector;
 import arrangement.controller.option.Option;
-import arrangement.view.Input;
-import arrangement.view.Output;
 
 public class Game {
 
@@ -24,7 +20,4 @@ public class Game {
             option.play();
         }
     }
-
-
-
 }
