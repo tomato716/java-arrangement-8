@@ -26,4 +26,10 @@ public class Validator {
             throw new IllegalArgumentException("[ERROR] 숫자를 입력하세요.");
         }
     }
+
+    public void isOverIncomeRange(int currentIncome) {
+        if (currentIncome < 20_000) {
+            throw new IllegalArgumentException("[ERROR] 하루 일당은 총 20,000원을 채워야합니다.");
+        }
+    }
 }
