@@ -1,6 +1,7 @@
 package arrangement.controller.option;
 
 import arrangement.model.Category;
+import arrangement.model.Income;
 import arrangement.model.Inventory;
 import arrangement.model.Mission;
 import arrangement.view.Input;
@@ -10,10 +11,12 @@ import java.util.List;
 public class MissionOption implements Option {
     private final Mission mission;
     private final Inventory inventory;
+    private final Income income;
 
-    public MissionOption(Mission mission, Inventory inventory) {
+    public MissionOption(Mission mission, Inventory inventory, Income income) {
         this.mission = mission;
         this.inventory = inventory;
+        this.income = income;
     }
 
     @Override
@@ -32,15 +35,21 @@ public class MissionOption implements Option {
                 System.out.println(e.getMessage());
             }
         }
+
+        income.increase();
     }
 
     private void tryRemoveMission(String input) {
         List<String> categoryAndItems = splitCategoryItem(input);
 
-        Category category = validateCategory(categoryAndItems.getFirst());
+        String inputCategory = StringUpperCase(categoryAndItems.getFirst());
+        Category category = validateCategory(inputCategory);
         List<String> items = splitInput(categoryAndItems.getLast(), ",");
         validateRemoveItems(category, items);
+    }
 
+    private String StringUpperCase(String input) {
+        return input.toUpperCase();
     }
 
     private void validateRemoveItems(Category category, List<String> inputItems) {

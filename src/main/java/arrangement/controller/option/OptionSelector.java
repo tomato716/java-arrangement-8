@@ -33,7 +33,7 @@ public class OptionSelector {
     private void createOption() {
         Inventory inventory = new Inventory();
         selector.add(new InventoryOption(inventory));
-        selector.add(new MissionOption(new Mission(missionItem), inventory));
+        selector.add(new MissionOption(new Mission(missionItem), inventory, income));
         selector.add(new IncomeOption(income));
         selector.add(new ShutdownOption(new Shutdown(income, gameState)));
     }
