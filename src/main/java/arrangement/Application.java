@@ -1,6 +1,7 @@
 package arrangement;
 
 import arrangement.controller.Game;
+import arrangement.controller.option.OptionCreator;
 import arrangement.model.GameState;
 import arrangement.model.Income;
 import arrangement.model.MissionItem;
@@ -17,8 +18,9 @@ public class Application {
         Validator validator = new Validator();
         MissionItem missionItem = new RandomMissionItem();
         Output output = new Output();
+        OptionCreator optionCreator = new OptionCreator(gameState, income, validator, missionItem);
+        Game game = new Game(new OptionSelector(optionCreator, validator, output), gameState);
 
-        Game game = new Game(new OptionSelector(gameState, income, validator, missionItem, output), gameState);
         game.play();
     }
 }
