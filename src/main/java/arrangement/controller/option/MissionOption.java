@@ -53,12 +53,25 @@ public class MissionOption implements Option {
     }
 
     private void validateRemoveItems(Category category, List<String> inputItems) {
+        validateItemBlank(inputItems);
         for (String item : inputItems) {
             if (!category.includeItem(item)) {
                 throw new IllegalArgumentException("[ERROR] 아이템을 잘못 입력했습니다.");
             }
             mission.removeMission(item);
             inventory.addItem(category, item);
+        }
+    }
+
+    private void validateItemBlank(List<String> inputItems) {
+        for (String inputItem : inputItems) {
+            validateBlank(inputItem);
+        }
+    }
+
+    private void validateBlank(String input) {
+        if (input.isBlank()) {
+            throw new IllegalArgumentException("[ERROR] 공백이나 빈값은 입력할 수 없습니다.");
         }
     }
 
@@ -69,6 +82,7 @@ public class MissionOption implements Option {
     }
 
     private Category validateCategory(String category) {
+        validateBlank(category);
         Category name = Category.includeCategory(category);
 
         if (name == null) {
