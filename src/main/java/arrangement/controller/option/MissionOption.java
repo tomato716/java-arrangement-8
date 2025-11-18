@@ -4,7 +4,9 @@ import arrangement.model.Category;
 import arrangement.model.Income;
 import arrangement.model.Inventory;
 import arrangement.model.Mission;
+import arrangement.model.Validator;
 import arrangement.view.Input;
+import arrangement.view.Output;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,27 +14,29 @@ public class MissionOption implements Option {
     private final Mission mission;
     private final Inventory inventory;
     private final Income income;
+    private final Validator validator;
+    private final Output output;
 
-    public MissionOption(Mission mission, Inventory inventory, Income income) {
+    public MissionOption(Mission mission, Inventory inventory, Income income, Validator validator, Output output) {
         this.mission = mission;
         this.inventory = inventory;
         this.income = income;
+        this.validator = validator;
+        this.output = output;
     }
 
     @Override
     public void play() {
-        System.out.println("--- 미션 ---");
+        output.missionHeader();
         mission.createMission();
 
         while (mission.itemCount() != 0) {
             try {
-                mission.showMission();
-                System.out.println("카테고리 별로 정리하세요.");
-                System.out.println("입력은 {카테고리} - {정리할 물품},{정리할 물품}으로 입력해주세요.");
+                output.printMission(mission.getMission());
                 String input = Input.console();
                 tryRemoveMission(input);
             } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+                output.printError(e);
             }
         }
 
@@ -40,38 +44,26 @@ public class MissionOption implements Option {
     }
 
     private void tryRemoveMission(String input) {
-        List<String> categoryAndItems = splitCategoryItem(input);
+        List<String> categoryAndItems = splitCategoryAndItem(input);
 
         String inputCategory = StringUpperCase(categoryAndItems.getFirst());
-        Category category = validateCategory(inputCategory);
+        Category category = validator.correctCategory(inputCategory);
+
         List<String> items = splitInput(categoryAndItems.getLast(), ",");
-        validateRemoveItems(category, items);
+        validator.itemsIsBlank(items);
+
+        removeAndSaveItems(category, items);
     }
 
     private String StringUpperCase(String input) {
         return input.toUpperCase();
     }
 
-    private void validateRemoveItems(Category category, List<String> inputItems) {
-        validateItemBlank(inputItems);
+    private void removeAndSaveItems(Category category, List<String> inputItems) {
         for (String item : inputItems) {
-            if (!category.includeItem(item)) {
-                throw new IllegalArgumentException("[ERROR] 아이템을 잘못 입력했습니다.");
-            }
+            validator.isIncludeItem(category, item);
             mission.removeMission(item);
             inventory.addItem(category, item);
-        }
-    }
-
-    private void validateItemBlank(List<String> inputItems) {
-        for (String inputItem : inputItems) {
-            validateBlank(inputItem);
-        }
-    }
-
-    private void validateBlank(String input) {
-        if (input.isBlank()) {
-            throw new IllegalArgumentException("[ERROR] 공백이나 빈값은 입력할 수 없습니다.");
         }
     }
 
@@ -81,25 +73,8 @@ public class MissionOption implements Option {
                 .toList();
     }
 
-    private Category validateCategory(String category) {
-        validateBlank(category);
-        Category name = Category.includeCategory(category);
-
-        if (name == null) {
-            throw new IllegalArgumentException("[ERROR] 카테고리는 MEAT, DRINK, VEGETABLE, FRUIT만 입력 가능합니다.");
-        }
-
-        return name;
-    }
-
-    private List<String> splitCategoryItem(String input) {
-        isHaveDash(input);
+    private List<String> splitCategoryAndItem(String input) {
+        validator.dashOnlyOne(input);
         return splitInput(input, "-");
-    }
-
-    private void isHaveDash(String input) {
-        if (!input.contains("-")) {
-            throw new IllegalArgumentException("[ERROR] 잘못입력하셨습니다.");
-        }
     }
 }
