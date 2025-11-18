@@ -11,6 +11,11 @@ public class ShutdownOption implements Option {
 
     @Override
     public void play() {
-        shutdown.off();
+        try {
+            shutdown.off();
+            System.out.println("일과 종료!");
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

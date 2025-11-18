@@ -10,8 +10,10 @@ public class Shutdown {
     }
 
     public void off() {
-        if (income.getIncome() >= 20_000) {
-            gameState.off();
+        if (income.getIncome() < 20_000) {
+            throw new IllegalArgumentException("[ERROR] 하루 일당은 총 20,000원을 채워야합니다.");
         }
+
+        gameState.off();
     }
 }
