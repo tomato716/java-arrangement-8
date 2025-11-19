@@ -60,7 +60,6 @@ public class MissionOption implements Option {
 
     private void removeAndSaveItems(Category category, List<String> inputItems) {
         for (String item : inputItems) {
-            validator.isIncludeItem(category, item);
             mission.removeMission(item);
             inventory.addItem(category, item);
         }

@@ -50,12 +50,6 @@ public class Validator {
         }
     }
 
-    public void isIncludeItem(Category category, String item) {
-        if (!category.includeItem(item)) {
-            throw new IllegalArgumentException("[ERROR] 아이템을 잘못 입력했습니다.");
-        }
-    }
-
     public void itemsIsBlank(List<String> inputItems) {
         for (String inputItem : inputItems) {
             isNotBlank(inputItem);
