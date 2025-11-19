@@ -1,5 +1,6 @@
 package arrangement.model;
 
+import arrangement.constant.ErrorMessage;
 import java.util.List;
 
 public class Validator {
@@ -15,7 +16,7 @@ public class Validator {
 
     private void isCorrectNumberRange(int number) {
         if (number < NUMBER_START || number > NUMBER_END) {
-            throw new IllegalArgumentException("[ERROR] 잘못된 번호입니다.");
+            throw new IllegalArgumentException(ErrorMessage.OPTION_RANGE.getMessage());
         }
     }
 
@@ -23,30 +24,30 @@ public class Validator {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 숫자를 입력하세요.");
+            throw new IllegalArgumentException(ErrorMessage.NOT_NUMBER.getMessage());
         }
     }
 
     public void isOverIncomeRange(int currentIncome) {
         if (currentIncome < 20_000) {
-            throw new IllegalArgumentException("[ERROR] 하루 일당은 총 20,000원을 채워야합니다.");
+            throw new IllegalArgumentException(ErrorMessage.UNDER_INCOME.getMessage());
         }
     }
 
     public Category correctCategory(String category) {
         isNotBlank(category);
-        Category name = Category.includeCategory(category);
+        Category categoryName = Category.includeCategory(category);
 
-        if (name == null) {
-            throw new IllegalArgumentException("[ERROR] 카테고리는 MEAT, DRINK, VEGETABLE, FRUIT만 입력 가능합니다.");
+        if (categoryName == null) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_CATEGORY.getMessage());
         }
 
-        return name;
+        return categoryName;
     }
 
     private void isNotBlank(String input) {
         if (input.isBlank()) {
-            throw new IllegalArgumentException("[ERROR] 공백이나 빈값은 입력할 수 없습니다.");
+            throw new IllegalArgumentException(ErrorMessage.NOT_BLANK.getMessage());
         }
     }
 
@@ -62,14 +63,14 @@ public class Validator {
                 .count();
 
         if (count != 1) {
-            throw new IllegalArgumentException("[ERROR] 카테고리와 아이템은 -(대쉬) 하나로 구분하여 입력하세요.");
+            throw new IllegalArgumentException(ErrorMessage.DASH_ONLY_ONE.getMessage());
         }
     }
 
     public void NotTypoItems(Category category, List<String> items) {
         for (String item : items) {
             if (!category.includeItem(item)) {
-                throw new IllegalArgumentException("[ERROR] 아이템을 잘못 입력했습니다.");
+                throw new IllegalArgumentException(ErrorMessage.INVALID_ITEM.getMessage());
             }
         }
     }

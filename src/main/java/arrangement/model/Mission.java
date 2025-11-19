@@ -1,5 +1,6 @@
 package arrangement.model;
 
+import arrangement.constant.ErrorMessage;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class Mission {
 
     private void validate(String input) {
         if (!mission.contains(input)) {
-            throw new IllegalArgumentException("[ERROR] 잘못된 입력입니다.");
+            throw new IllegalArgumentException(ErrorMessage.NOT_INCLUDE_MISSION.getMessage());
         }
     }
 
