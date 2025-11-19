@@ -27,7 +27,7 @@ public class MissionOption implements Option {
 
     @Override
     public void play() {
-        output.missionHeader();
+        output.printMissionHeader();
         mission.createMission();
 
         while (mission.itemCount() != 0) {
