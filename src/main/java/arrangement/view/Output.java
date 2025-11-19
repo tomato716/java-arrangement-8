@@ -51,4 +51,9 @@ public class Output {
         System.out.println("--- 현재 수입 ---");
         System.out.printf("%,d원\n", income.getIncome());
     }
+
+    public void printShutdown(Income income) {
+        System.out.println("일과 종료!");
+        System.out.println("최종 수입 : " + income.getIncome());
+    }
 }
