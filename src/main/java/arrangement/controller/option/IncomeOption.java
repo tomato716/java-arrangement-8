@@ -14,6 +14,6 @@ public class IncomeOption implements Option {
 
     @Override
     public void play() {
-        output.printCurrentIncome(income.getIncome());
+        output.printCurrentIncome(income);
     }
 }

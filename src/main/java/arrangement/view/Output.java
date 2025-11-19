@@ -1,6 +1,7 @@
 package arrangement.view;
 
 import arrangement.model.Category;
+import arrangement.model.Income;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -46,8 +47,8 @@ public class Output {
         return String.join(", ", items);
     }
 
-    public void printCurrentIncome(int currentIncome) {
+    public void printCurrentIncome(Income income) {
         System.out.println("--- 현재 수입 ---");
-        System.out.printf("%,d원\n", currentIncome);
+        System.out.printf("%,d원\n", income.getIncome());
     }
 }
