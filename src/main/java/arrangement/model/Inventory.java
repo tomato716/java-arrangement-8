@@ -5,15 +5,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Inventory {
-    private final Map<Category, Map<String, Integer>> inventory = new EnumMap<>(Category.class);
+    private final Map<Category, Map<String, Integer>> products = new EnumMap<>(Category.class);
 
     public Inventory() {
-        createInventory();
+        createProducts();
     }
 
-    private void createInventory() {
+    private void createProducts() {
         for (Category category : Category.values()) {
-            inventory.put(category, createItem(category));
+            products.put(category, createItem(category));
         }
     }
 
@@ -28,10 +28,10 @@ public class Inventory {
     }
 
 
-    public Map<Category, Map<String, Integer>> getInventory() {
+    public Map<Category, Map<String, Integer>> getProducts() {
         Map<Category, Map<String, Integer>> copyInventory = new EnumMap<>(Category.class);
 
-        for (Category category : inventory.keySet()) {
+        for (Category category : products.keySet()) {
             copyInventory.put(category, getItems(category));
         }
 
@@ -39,11 +39,11 @@ public class Inventory {
     }
 
     private Map<String, Integer> getItems(Category category) {
-        return Map.copyOf(inventory.get(category));
+        return Map.copyOf(products.get(category));
     }
 
     public void addItem(Category category, String item) {
-        Map<String, Integer> categoryInventory = inventory.get(category);
+        Map<String, Integer> categoryInventory = products.get(category);
         categoryInventory.merge(item, 1, Integer::sum);
     }
 }
