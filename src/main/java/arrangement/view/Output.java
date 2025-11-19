@@ -60,4 +60,9 @@ public class Output {
     private String formatIncome(Income income) {
         return String.format("%,d원", income.getIncome());
     }
+
+    public void printMissionComplete() {
+        System.out.println("미션 완료!");
+        System.out.println("수당으로 10,000원을 벌었습니다!");
+    }
 }

@@ -37,8 +37,8 @@ public class MissionOption implements Option {
                 output.printError(e);
             }
         }
-
         income.increase();
+        output.printMissionComplete();
     }
 
     private void tryRemoveMission(String input) {
