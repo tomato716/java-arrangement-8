@@ -15,11 +15,8 @@ public class Output {
 
     }
 
-    public void printMissionHeader() {
-        System.out.println("--- 미션 ---");
-    }
-
     public void printMission(List<String> mission) {
+        System.out.println("--- 미션 ---");
         System.out.println(mission);
         System.out.println("카테고리 별로 정리하세요.");
         System.out.println("입력은 {카테고리} - {아이템},{아이템}으로 입력해주세요.");
