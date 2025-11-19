@@ -32,8 +32,7 @@ public class MissionOption implements Option {
         while (mission.itemCount() != 0) {
             try {
                 output.printMission(mission.getMission());
-                String input = Input.console();
-                tryRemoveMission(input);
+                tryRemoveMission(Input.console());
             } catch (IllegalArgumentException e) {
                 output.printError(e);
             }
