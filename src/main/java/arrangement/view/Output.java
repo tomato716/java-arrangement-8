@@ -12,7 +12,7 @@ public class Output {
 
     }
 
-    public void missionHeader() {
+    public void printMissionHeader() {
         System.out.println("--- 미션 ---");
     }
 
