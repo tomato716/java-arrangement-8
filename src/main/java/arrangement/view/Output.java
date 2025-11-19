@@ -45,4 +45,9 @@ public class Output {
 
         return String.join(", ", items);
     }
+
+    public void printCurrentIncome(int currentIncome) {
+        System.out.println("--- 현재 수입 ---");
+        System.out.printf("%,d원\n", currentIncome);
+    }
 }

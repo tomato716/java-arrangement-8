@@ -1,17 +1,19 @@
 package arrangement.controller.option;
 
 import arrangement.model.Income;
+import arrangement.view.Output;
 
 public class IncomeOption implements Option {
     private final Income income;
+    private final Output output;
 
-    public IncomeOption(Income income) {
+    public IncomeOption(Income income, Output output) {
         this.income = income;
+        this.output = output;
     }
 
     @Override
     public void play() {
-        System.out.println("--- 현재 수입 ---");
-        System.out.printf("%,d원%n", income.getIncome());
+        output.printCurrentIncome(income.getIncome());
     }
 }

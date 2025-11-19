@@ -36,7 +36,7 @@ public class OptionCreator {
         return List.of(
                 new InventoryOption(inventory, output),
                 new MissionOption(new Mission(missionItem), inventory, income, validator, output),
-                new IncomeOption(income),
+                new IncomeOption(income, output),
                 new ShutdownOption(new Shutdown(income, gameState, validator))
         );
     }
