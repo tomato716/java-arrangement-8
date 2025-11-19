@@ -29,7 +29,17 @@ public class Inventory {
 
 
     public Map<Category, Map<String, Integer>> getInventory() {
-        return inventory;
+        Map<Category, Map<String, Integer>> copyInventory = new EnumMap<>(Category.class);
+
+        for (Category category : inventory.keySet()) {
+            copyInventory.put(category, getItems(category));
+        }
+
+        return Map.copyOf(copyInventory);
+    }
+
+    private Map<String, Integer> getItems(Category category) {
+        return Map.copyOf(inventory.get(category));
     }
 
     public void addItem(Category category, String item) {
