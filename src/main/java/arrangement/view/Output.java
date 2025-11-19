@@ -49,11 +49,15 @@ public class Output {
 
     public void printCurrentIncome(Income income) {
         System.out.println("--- 현재 수입 ---");
-        System.out.printf("%,d원\n", income.getIncome());
+        System.out.println(formatIncome(income));
     }
 
     public void printShutdown(Income income) {
         System.out.println("일과 종료!");
-        System.out.println("최종 수입 : " + income.getIncome());
+        System.out.println("최종 수입 : " + formatIncome(income));
+    }
+
+    private String formatIncome(Income income) {
+        return String.format("%,d원", income.getIncome());
     }
 }
