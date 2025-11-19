@@ -71,4 +71,12 @@ public class Validator {
             throw new IllegalArgumentException("[ERROR] 카테고리와 아이템은 -(대쉬) 하나로 구분하여 입력하세요.");
         }
     }
+
+    public void NotTypoItems(Category category, List<String> items) {
+        for (String item : items) {
+            if (!category.includeItem(item)) {
+                throw new IllegalArgumentException("[ERROR] 아이템을 잘못 입력했습니다.");
+            }
+        }
+    }
 }

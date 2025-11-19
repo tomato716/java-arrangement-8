@@ -49,6 +49,7 @@ public class MissionOption implements Option {
 
         List<String> items = splitInput(categoryAndItems.getLast(), ",");
         validator.itemsIsBlank(items);
+        validator.NotTypoItems(category, items);
 
         removeAndSaveItems(category, items);
     }
