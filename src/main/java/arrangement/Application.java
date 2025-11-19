@@ -8,6 +8,7 @@ import arrangement.model.MissionItem;
 import arrangement.model.RandomMissionItem;
 import arrangement.model.Validator;
 import arrangement.controller.option.OptionSelector;
+import arrangement.view.Input;
 import arrangement.view.Output;
 
 public class Application {
@@ -23,5 +24,6 @@ public class Application {
         Game game = new Game(optionSelector, gameState);
 
         game.play();
+        Input.finish();
     }
 }
