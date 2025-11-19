@@ -1,44 +1,19 @@
 package arrangement.controller.option;
 
-import arrangement.model.Category;
 import arrangement.model.Inventory;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
+import arrangement.view.Output;
 
 public class InventoryOption implements Option {
     private final Inventory inventory;
+    private final Output output;
 
-    public InventoryOption(Inventory inventory) {
+    public InventoryOption(Inventory inventory, Output output) {
         this.inventory = inventory;
+        this.output = output;
     }
 
     @Override
     public void play() {
-        System.out.println("재고 보기");
-        showInventory();
-
+        output.printInventory(inventory.getProducts());
     }
-
-    private void showInventory() {
-        Map<Category, Map<String, Integer>> myInventory = inventory.getInventory();
-
-        for (Category category : myInventory.keySet()) {
-            System.out.print(category.getKoreanName() + ": ");
-            System.out.println(showCategoryItem(myInventory.get(category)));
-        }
-        System.out.println();
-    }
-
-    private String showCategoryItem(Map<String, Integer> categoryItem) {
-        List<String> categoryItems = new ArrayList<>();
-
-        for (String value : categoryItem.keySet()) {
-            categoryItems.add(value + " - " + categoryItem.get(value) + "개");
-        }
-
-        return String.join(", ", categoryItems);
-    }
-
-
 }

@@ -1,6 +1,9 @@
 package arrangement.view;
 
+import arrangement.model.Category;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Output {
     public void printStart() {
@@ -24,5 +27,25 @@ public class Output {
 
     public void printError(IllegalArgumentException e) {
         System.out.println(e.getMessage());
+    }
+
+    public void printInventory(Map<Category, Map<String, Integer>> products) {
+        System.out.println("--- 현재 재고 ---");
+
+        for (Category category : products.keySet()) {
+            System.out.print(category.getKoreanName() + " : ");
+            System.out.println(printCategoryItems(products.get(category)));
+        }
+        System.out.println();
+    }
+
+    private String printCategoryItems(Map<String, Integer> categoryItems) {
+        List<String> items = new ArrayList<>();
+
+        for (String itemName : categoryItems.keySet()) {
+            items.add(itemName + "-" + categoryItems.get(itemName) + "개");
+        }
+
+        return String.join(", ", items);
     }
 }
