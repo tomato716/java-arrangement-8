@@ -8,6 +8,7 @@ import java.util.Map;
 
 public class Output {
     public void printStart() {
+        System.out.println();
         System.out.println("번호를 선택해주세요.");
         System.out.println("1. 재고 보기");
         System.out.println("2. 미션 보기");
@@ -17,6 +18,7 @@ public class Output {
     }
 
     public void printMission(List<String> mission) {
+        System.out.println();
         System.out.println("--- 미션 ---");
         System.out.println(mission);
         System.out.println("카테고리 별로 정리하세요.");
@@ -28,13 +30,13 @@ public class Output {
     }
 
     public void printInventory(Map<Category, Map<String, Integer>> products) {
+        System.out.println();
         System.out.println("--- 현재 재고 ---");
 
         for (Category category : products.keySet()) {
             System.out.print(category.getKoreanName() + " : ");
             System.out.println(printCategoryItems(products.get(category)));
         }
-        System.out.println();
     }
 
     private String printCategoryItems(Map<String, Integer> categoryItems) {
@@ -48,11 +50,13 @@ public class Output {
     }
 
     public void printCurrentIncome(Income income) {
+        System.out.println();
         System.out.println("--- 현재 수입 ---");
         System.out.println(formatIncome(income));
     }
 
     public void printShutdown(Income income) {
+        System.out.println();
         System.out.println("일과 종료!");
         System.out.println("최종 수입 : " + formatIncome(income));
     }
@@ -62,6 +66,7 @@ public class Output {
     }
 
     public void printMissionComplete() {
+        System.out.println();
         System.out.println("미션 완료!");
         System.out.println("수당으로 10,000원을 벌었습니다!");
     }
