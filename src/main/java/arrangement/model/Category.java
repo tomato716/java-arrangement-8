@@ -16,10 +16,10 @@ public enum Category {
         this.items = items;
     }
 
-    public static Category includeCategory(String category) {
-        for (Category value : Category.values()) {
-            if (category.equals(value.name())) {
-                return value;
+    public static Category includeCategory(String inputCategory) {
+        for (Category element : Category.values()) {
+            if (inputCategory.equals(element.name())) {
+                return element;
             }
         }
         return null;

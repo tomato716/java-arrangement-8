@@ -32,9 +32,9 @@ public class Validator {
         }
     }
 
-    public Category correctCategory(String category) {
-        isNotBlank(category);
-        Category categoryName = Category.includeCategory(category);
+    public Category correctCategory(String inputCategory) {
+        isNotBlank(inputCategory);
+        Category categoryName = Category.includeCategory(inputCategory);
 
         if (categoryName == null) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_CATEGORY.getMessage());
