@@ -56,11 +56,9 @@ public class Validator {
     }
 
     public void dashOnlyOne(String input) {
-        long count = input.chars()
-                .filter(c -> c == '-')
-                .count();
+        String[] inputSplit = input.split(Constants.CATEGORY_ITEM_DELIMITER, -1);
 
-        if (count != 1) {
+        if (inputSplit.length != Constants.CATEGORY_ITEM_AREA) {
             throw new IllegalArgumentException(ErrorMessage.DASH_ONLY_ONE.getMessage());
         }
     }
