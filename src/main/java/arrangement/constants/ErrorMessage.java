@@ -1,4 +1,4 @@
-package arrangement.constant;
+package arrangement.constants;
 
 public enum ErrorMessage {
     OPTION_RANGE("옵션은 1~4까지만 입력할 수 있습니다."),
