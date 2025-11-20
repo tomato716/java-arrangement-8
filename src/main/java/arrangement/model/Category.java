@@ -16,14 +16,6 @@ public enum Category {
         this.items = items;
     }
 
-    public String getKoreanName() {
-        return koreanName;
-    }
-
-    public List<String> getItems() {
-        return items;
-    }
-
     public static Category includeCategory(String category) {
         for (Category value : Category.values()) {
             if (category.equals(value.name())) {
@@ -31,6 +23,14 @@ public enum Category {
             }
         }
         return null;
+    }
+
+    public String getKoreanName() {
+        return koreanName;
+    }
+
+    public List<String> getItems() {
+        return items;
     }
 
     public boolean includeItem(String inputItem) {
