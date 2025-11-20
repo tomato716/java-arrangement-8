@@ -1,6 +1,6 @@
 package arrangement.model;
 
-import arrangement.constant.ErrorMessage;
+import arrangement.constants.ErrorMessage;
 import java.util.ArrayList;
 import java.util.List;
 
