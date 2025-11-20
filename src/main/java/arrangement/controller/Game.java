@@ -1,8 +1,8 @@
 package arrangement.controller;
 
-import arrangement.model.GameState;
-import arrangement.controller.option.OptionSelector;
 import arrangement.controller.option.Option;
+import arrangement.controller.option.OptionSelector;
+import arrangement.model.GameState;
 
 public class Game {
 

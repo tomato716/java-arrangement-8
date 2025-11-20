@@ -2,12 +2,12 @@ package arrangement;
 
 import arrangement.controller.Game;
 import arrangement.controller.option.OptionCreator;
+import arrangement.controller.option.OptionSelector;
 import arrangement.model.GameState;
 import arrangement.model.Income;
 import arrangement.model.MissionItem;
 import arrangement.model.RandomMissionItem;
 import arrangement.model.Validator;
-import arrangement.controller.option.OptionSelector;
 import arrangement.view.Input;
 import arrangement.view.Output;
 
