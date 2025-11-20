@@ -1,5 +1,6 @@
 package arrangement.controller.option;
 
+import arrangement.constants.Constants;
 import arrangement.model.Validator;
 import arrangement.view.Input;
 import arrangement.view.Output;
@@ -17,7 +18,7 @@ public class OptionSelector {
     }
 
     private Option select(int number) {
-        return selector.get(number - 1);
+        return selector.get(number - Constants.ALIGN_INDEX);
     }
 
     public Option askOption() {

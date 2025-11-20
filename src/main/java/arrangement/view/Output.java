@@ -1,5 +1,6 @@
 package arrangement.view;
 
+import arrangement.constants.Constants;
 import arrangement.model.Category;
 import arrangement.model.Income;
 import java.util.ArrayList;
@@ -43,10 +44,10 @@ public class Output {
         List<String> items = new ArrayList<>();
 
         for (String itemName : categoryItems.keySet()) {
-            items.add(itemName + "-" + categoryItems.get(itemName) + "개");
+            items.add(itemName + Constants.CATEGORY_ITEM_DELIMITER + categoryItems.get(itemName) + "개");
         }
 
-        return String.join(", ", items);
+        return String.join(Constants.ITEM_DELIMITER, items);
     }
 
     public void printCurrentIncome(Income income) {

@@ -1,11 +1,12 @@
 package arrangement.model;
 
+import arrangement.constants.Constants;
+
 public class Income {
-    private static final int DAILY_WAGE = 10_000;
     private int income;
 
     public void increase() {
-        income += DAILY_WAGE;
+        income += Constants.MISSION_INCOME;
     }
 
     public int getIncome() {

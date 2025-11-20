@@ -1,5 +1,6 @@
 package arrangement.controller.option;
 
+import arrangement.constants.Constants;
 import arrangement.model.Category;
 import arrangement.model.Income;
 import arrangement.model.Inventory;
@@ -47,7 +48,7 @@ public class MissionOption implements Option {
         String inputCategory = StringUpperCase(categoryAndItems.getFirst());
         Category category = validator.correctCategory(inputCategory);
 
-        List<String> items = splitInput(categoryAndItems.getLast(), ",");
+        List<String> items = splitInput(categoryAndItems.getLast(), Constants.ITEM_DELIMITER);
         validator.itemsIsBlank(items);
         validator.NotTypoItems(category, items);
 
@@ -73,6 +74,6 @@ public class MissionOption implements Option {
 
     private List<String> splitCategoryAndItem(String input) {
         validator.dashOnlyOne(input);
-        return splitInput(input, "-");
+        return splitInput(input, Constants.CATEGORY_ITEM_DELIMITER);
     }
 }

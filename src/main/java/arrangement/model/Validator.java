@@ -1,12 +1,10 @@
 package arrangement.model;
 
-import arrangement.constant.ErrorMessage;
+import arrangement.constants.Constants;
+import arrangement.constants.ErrorMessage;
 import java.util.List;
 
 public class Validator {
-    private static final int NUMBER_START = 1;
-    private static final int NUMBER_END = 4;
-
     public int selectNumber(String input) {
         int number = isDigit(input);
         isCorrectNumberRange(number);
@@ -15,7 +13,7 @@ public class Validator {
     }
 
     private void isCorrectNumberRange(int number) {
-        if (number < NUMBER_START || number > NUMBER_END) {
+        if (number < Constants.OPTION_NUMBER_MIN || number > Constants.OPTION_NUMBER_MAX) {
             throw new IllegalArgumentException(ErrorMessage.OPTION_RANGE.getMessage());
         }
     }
@@ -29,7 +27,7 @@ public class Validator {
     }
 
     public void isOverIncomeRange(int currentIncome) {
-        if (currentIncome < 20_000) {
+        if (currentIncome < Constants.TODAY_QUOTA) {
             throw new IllegalArgumentException(ErrorMessage.UNDER_INCOME.getMessage());
         }
     }

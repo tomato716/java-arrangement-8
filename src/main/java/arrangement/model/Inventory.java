@@ -1,5 +1,6 @@
 package arrangement.model;
 
+import arrangement.constants.Constants;
 import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +22,7 @@ public class Inventory {
         Map<String, Integer> items = new HashMap<>();
 
         for (String item : category.getItems()) {
-            items.put(item, 0);
+            items.put(item, Constants.ITEM_COUNT_INITIAL);
         }
 
         return items;
@@ -44,6 +45,6 @@ public class Inventory {
 
     public void addItem(Category category, String item) {
         Map<String, Integer> categoryInventory = products.get(category);
-        categoryInventory.merge(item, 1, Integer::sum);
+        categoryInventory.merge(item, Constants.ITEM_COUNT_INCREASE, Integer::sum);
     }
 }
