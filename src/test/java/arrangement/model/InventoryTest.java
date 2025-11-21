@@ -58,4 +58,18 @@ public class InventoryTest {
         assertThat(products.get(Category.MEAT))
                 .containsEntry("소고기", 5);
     }
+
+    @DisplayName("깊은 복사로 값의 수정이나 변경을 막는지 테스트")
+    @Test
+    void isDeepCopyInventory() {
+        Map<Category, Map<String, Integer>> products = inventory.getProducts();
+
+        for (int i = 0; i < 5; i++) {
+            inventory.addItem(Category.MEAT, "소고기");
+        }
+
+        assertThat(products.get(Category.MEAT))
+                .doesNotContainEntry("소고기", 5)
+                .containsEntry("소고기", 0);
+    }
 }
