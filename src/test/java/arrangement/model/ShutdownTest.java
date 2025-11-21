@@ -1,7 +1,9 @@
 package arrangement.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import arrangement.constants.ErrorMessage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -29,5 +31,13 @@ public class ShutdownTest {
         shutdown.off();
 
         assertThat(gameState.getState()).isFalse();
+    }
+
+    @DisplayName("소득이 20,000원 미만이면 종료되는지 테스트")
+    @Test
+    void isNotCorrectGameShutdown() {
+        assertThatThrownBy(() -> shutdown.off())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.UNDER_INCOME.getMessage());
     }
 }
