@@ -1,0 +1,19 @@
+package arrangement.model;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+public class GameStateTest {
+
+    @DisplayName("종료 메시지를 보내면 올바르게 종료하는지 테스트")
+    @Test
+    void isCorrectFinish() {
+        GameState gameState = new GameState();
+
+        gameState.off();
+
+        assertThat(gameState.getState()).isFalse();
+    }
+}
