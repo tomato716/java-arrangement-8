@@ -40,4 +40,18 @@ public class CategoryTest {
 
         assertThat(itemResult).isTrue();
     }
+
+    @DisplayName("카테고리에 존재하지 않는 아이템을 입력했을때 false가 나오는지 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {
+            "MEAT, 삼다수", "MEAT, 사이다", "MEAT, abc",
+            "DRINK, 깻잎", "DRINK, 상추", "DRINK, def",
+            "VEGETABLE, 사과", "VEGETABLE, 키위", "VEGETABLE, ghi",
+            "FRUIT, 소고기", "FRUIT, 양고기", "FRUIT, jkl"
+    })
+    void isNotCorrectItemsToCategory(Category category, String inputItem) {
+        boolean itemResult = category.includeItem(inputItem);
+
+        assertThat(itemResult).isFalse();
+    }
 }
