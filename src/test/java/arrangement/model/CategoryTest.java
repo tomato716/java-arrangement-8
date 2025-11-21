@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class CategoryTest {
 
@@ -15,5 +16,14 @@ public class CategoryTest {
         Category resultCategory = Category.includeCategory(inputCategory);
 
         assertThat(resultCategory).isEqualTo(result);
+    }
+
+    @DisplayName("카테고리에 없는 값을 입력하면 null이 나오는지 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = {"MMM", "EEE", "AAA", "TTT"})
+    void isNotCorrectCategoryNames(String inputCategory) {
+        Category resultCategory = Category.includeCategory(inputCategory);
+
+        assertThat(resultCategory).isNull();
     }
 }
