@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import arrangement.constants.Constants;
+import arrangement.constants.ErrorMessage;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -66,5 +67,13 @@ public class MissionMachineTest {
 
         List<String> removedMission = missionMachine.getMission();
         assertThat(removedMission).doesNotContain("양고기");
+    }
+
+    @DisplayName("미션에 없는 아이템을 제거하면 예외 발생 테스트")
+    @Test
+    void isNotHaveItemInMission() {
+        assertThatThrownBy(() -> missionMachine.removeMissionItem("abc"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.NOT_INCLUDE_MISSION.getMessage());
     }
 }
