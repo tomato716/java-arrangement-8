@@ -11,6 +11,6 @@ public class RandomMissionItem extends MissionItemRule {
         List<String> randomMissionItem = new ArrayList<>(missionItem);
         Collections.shuffle(randomMissionItem);
 
-        return randomMissionItem.subList(0, Constants.NUMBER_OF_MISSION_ITEM);
+        return randomMissionItem.subList(0, Constants.MISSION_ITEM_SIZE);
     }
 }
