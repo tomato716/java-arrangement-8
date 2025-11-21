@@ -5,6 +5,7 @@ import arrangement.model.Income;
 import arrangement.model.Inventory;
 import arrangement.model.Mission;
 import arrangement.model.MissionItem;
+import arrangement.model.MissionMachine;
 import arrangement.model.Shutdown;
 import arrangement.model.Validator;
 import arrangement.view.Output;
@@ -35,7 +36,7 @@ public class OptionCreator {
 
         return List.of(
                 new InventoryOption(inventory, output),
-                new MissionOption(new Mission(missionItem), inventory, income, validator, output),
+                new MissionOption(new MissionMachine(missionItem), inventory, income, validator, output),
                 new IncomeOption(income, output),
                 new ShutdownOption(new Shutdown(income, gameState, validator), output, income)
         );

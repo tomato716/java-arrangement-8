@@ -4,7 +4,7 @@ import arrangement.constants.Constants;
 import arrangement.model.Category;
 import arrangement.model.Income;
 import arrangement.model.Inventory;
-import arrangement.model.Mission;
+import arrangement.model.MissionMachine;
 import arrangement.model.Validator;
 import arrangement.view.Input;
 import arrangement.view.Output;
@@ -12,13 +12,14 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MissionOption implements Option {
-    private final Mission mission;
+    private final MissionMachine mission;
     private final Inventory inventory;
     private final Income income;
     private final Validator validator;
     private final Output output;
 
-    public MissionOption(Mission mission, Inventory inventory, Income income, Validator validator, Output output) {
+    public MissionOption(MissionMachine mission, Inventory inventory, Income income, Validator validator,
+                         Output output) {
         this.mission = mission;
         this.inventory = inventory;
         this.income = income;

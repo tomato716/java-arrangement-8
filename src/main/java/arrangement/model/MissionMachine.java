@@ -4,18 +4,18 @@ import arrangement.constants.ErrorMessage;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Mission {
-    private final MissionItem missionItem;
+public class MissionMachine {
+    private final MissionItemRule missionItemRule;
     private List<String> mission;
 
 
-    public Mission(MissionItem missionItem) {
-        this.missionItem = missionItem;
+    public MissionMachine(MissionItemRule missionItem) {
+        this.missionItemRule = missionItem;
     }
 
     public void createMission() {
         if (mission == null || mission.isEmpty()) {
-            mission = new ArrayList<>(missionItem.create());
+            mission = new ArrayList<>(missionItemRule.create());
         }
     }
 
