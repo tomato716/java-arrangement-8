@@ -2,7 +2,7 @@ package arrangement.model;
 
 import java.util.List;
 
-public class FixedMissionItem extends MissionItem {
+public class FixedMissionItem extends MissionItemRule {
 
     @Override
     public List<String> create() {

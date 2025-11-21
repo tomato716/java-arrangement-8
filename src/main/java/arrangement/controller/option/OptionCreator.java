@@ -3,8 +3,7 @@ package arrangement.controller.option;
 import arrangement.model.GameState;
 import arrangement.model.Income;
 import arrangement.model.Inventory;
-import arrangement.model.Mission;
-import arrangement.model.MissionItem;
+import arrangement.model.MissionItemRule;
 import arrangement.model.MissionMachine;
 import arrangement.model.Shutdown;
 import arrangement.model.Validator;
@@ -15,14 +14,14 @@ public class OptionCreator {
     private final GameState gameState;
     private final Income income;
     private final Validator validator;
-    private final MissionItem missionItem;
+    private final MissionItemRule missionItem;
     private final Output output;
 
     public OptionCreator(
             GameState gameState,
             Income income,
             Validator validator,
-            MissionItem missionItem,
+            MissionItemRule missionItem,
             Output output) {
         this.gameState = gameState;
         this.income = income;

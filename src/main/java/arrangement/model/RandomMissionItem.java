@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class RandomMissionItem extends MissionItem {
+public class RandomMissionItem extends MissionItemRule {
     @Override
     public List<String> create() {
         List<String> randomMissionItem = new ArrayList<>(missionItem);
