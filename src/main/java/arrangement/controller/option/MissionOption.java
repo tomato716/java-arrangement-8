@@ -62,7 +62,7 @@ public class MissionOption implements Option {
 
     private void removeAndSaveItems(Category category, List<String> inputItems) {
         for (String item : inputItems) {
-            mission.removeMission(item);
+            mission.removeMissionItem(item);
             inventory.addItem(category, item);
         }
     }

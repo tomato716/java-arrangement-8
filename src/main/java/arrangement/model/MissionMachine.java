@@ -23,7 +23,7 @@ public class MissionMachine {
         return List.copyOf(mission);
     }
 
-    public void removeMission(String input) {
+    public void removeMissionItem(String input) {
         validate(input);
         mission.remove(input);
     }
