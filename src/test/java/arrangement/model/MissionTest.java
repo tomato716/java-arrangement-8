@@ -1,7 +1,9 @@
 package arrangement.model;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import arrangement.constants.Constants;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -23,5 +25,22 @@ public class MissionTest {
 
         assertThatThrownBy(() -> fixedMission.add("콩나물"))
                 .isInstanceOf(UnsupportedOperationException.class);
+    }
+
+    @DisplayName("미션이 다 해결되면 다시 생성되는지 테스트")
+    @Test
+    void createAgainMissionItems() {
+        FixedMissionItem fixedMissionItem = new FixedMissionItem();
+        List<String> ToBeRemovedItems = fixedMissionItem.create();
+
+        for (String item : ToBeRemovedItems) {
+            missionMachine.removeMissionItem(item);
+        }
+
+        assertThat(missionMachine.getMission()).hasSize(0);
+
+        missionMachine.createMission();
+
+        assertThat(missionMachine.getMission()).hasSize(Constants.MISSION_ITEM_SIZE);
     }
 }
