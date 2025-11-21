@@ -5,6 +5,7 @@ import arrangement.constants.ErrorMessage;
 import java.util.List;
 
 public class Validator {
+
     public int selectNumber(String input) {
         int number = isDigit(input);
         isCorrectNumberRange(number);
