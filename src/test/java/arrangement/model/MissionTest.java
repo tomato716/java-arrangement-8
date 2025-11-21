@@ -43,4 +43,16 @@ public class MissionTest {
 
         assertThat(missionMachine.getMission()).hasSize(Constants.MISSION_ITEM_SIZE);
     }
+
+    @DisplayName("미션이 다 해결안되면  다시 생성 안되는지 테스트")
+    @Test
+    void ifNotSolvedDoNotCreate() {
+        missionMachine.removeMissionItem("양고기");
+
+        missionMachine.createMission();
+
+        assertThat(missionMachine.getMission())
+                .size()
+                .isNotEqualTo(Constants.MISSION_ITEM_SIZE);
+    }
 }
