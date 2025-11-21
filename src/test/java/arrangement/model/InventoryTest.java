@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -43,5 +44,18 @@ public class InventoryTest {
         assertThat(products.get(category))
                 .containsOnlyKeys(category.getItems())
                 .containsEntry(koreanName, 0);
+    }
+
+    @DisplayName("재고에 아이템이 넣어지는지 테스트")
+    @Test
+    void isCorrectAddItem() {
+        for (int i = 0; i < 5; i++) {
+            inventory.addItem(Category.MEAT, "소고기");
+        }
+
+        Map<Category, Map<String, Integer>> products = inventory.getProducts();
+
+        assertThat(products.get(Category.MEAT))
+                .containsEntry("소고기", 5);
     }
 }
