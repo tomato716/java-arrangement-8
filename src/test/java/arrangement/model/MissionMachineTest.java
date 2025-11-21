@@ -55,4 +55,16 @@ public class MissionMachineTest {
                 .size()
                 .isNotEqualTo(Constants.MISSION_ITEM_SIZE);
     }
+
+    @DisplayName("미션의 아이템이 올바르게 제거되는지 테스트")
+    @Test
+    void isCorrectRemoveMissionItem() {
+        List<String> mission = missionMachine.getMission();
+        assertThat(mission).contains("양고기");
+
+        missionMachine.removeMissionItem("양고기");
+
+        List<String> removedMission = missionMachine.getMission();
+        assertThat(removedMission).doesNotContain("양고기");
+    }
 }
