@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class MissionTest {
+public class MissionMachineTest {
     private MissionMachine missionMachine;
 
     @BeforeEach
