@@ -13,11 +13,11 @@ public class Shutdown {
     }
 
     public void off() {
-        isOverIncomeRange(income);
+        validateOverIncomeRange(income);
         gameState.off();
     }
 
-    private void isOverIncomeRange(Income income) {
+    private void validateOverIncomeRange(Income income) {
         if (income.getIncome() < Constants.TODAY_QUOTA) {
             throw new IllegalArgumentException(ErrorMessage.UNDER_INCOME.getMessage());
         }

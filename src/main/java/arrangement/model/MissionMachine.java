@@ -24,11 +24,11 @@ public class MissionMachine {
     }
 
     public void removeMissionItem(String input) {
-        validate(input);
+        validateDoesNotContainItem(input);
         mission.remove(input);
     }
 
-    private void validate(String input) {
+    private void validateDoesNotContainItem(String input) {
         if (!mission.contains(input)) {
             throw new IllegalArgumentException(ErrorMessage.NOT_INCLUDE_MISSION.getMessage());
         }
