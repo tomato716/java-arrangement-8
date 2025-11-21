@@ -26,12 +26,6 @@ public class Validator {
         }
     }
 
-    public void isOverIncomeRange(int currentIncome) {
-        if (currentIncome < Constants.TODAY_QUOTA) {
-            throw new IllegalArgumentException(ErrorMessage.UNDER_INCOME.getMessage());
-        }
-    }
-
     public Category correctCategory(String inputCategory) {
         isNotBlank(inputCategory);
         Category categoryName = Category.includeCategory(inputCategory);

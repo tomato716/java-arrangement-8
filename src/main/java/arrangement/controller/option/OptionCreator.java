@@ -37,7 +37,7 @@ public class OptionCreator {
                 new InventoryOption(inventory, output),
                 new MissionOption(new MissionMachine(missionItem), inventory, income, validator, output),
                 new IncomeOption(income, output),
-                new ShutdownOption(new Shutdown(income, gameState, validator), output, income)
+                new ShutdownOption(new Shutdown(income, gameState), output, income)
         );
     }
 }
