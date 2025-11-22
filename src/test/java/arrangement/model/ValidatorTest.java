@@ -48,8 +48,8 @@ public class ValidatorTest {
     @DisplayName("입력값이 카테고리가 아닐 경우 예외 발생 테스트")
     @ParameterizedTest
     @ValueSource(strings = {"AAA", "BBB", "CCC", "DDD"})
-    void isNotInputCategory(String categoryName) {
-        assertThatThrownBy(() -> validator.correctCategory(categoryName))
+    void isNotInputCategory(String inputCategory) {
+        assertThatThrownBy(() -> validator.correctCategory(inputCategory))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.INVALID_CATEGORY.getMessage());
     }
@@ -57,8 +57,8 @@ public class ValidatorTest {
     @DisplayName("카테고리 입력값이 소문자일 경우 올바르게 동작하는지 테스트")
     @ParameterizedTest
     @CsvSource(value = {"meat,MEAT", "vegetable,VEGETABLE", "fruit,FRUIT", "drink,DRINK"})
-    void ChangeUpperCase(String categoryName, Category category) {
-        Category categoryResult = validator.correctCategory(categoryName);
+    void ChangeUpperCase(String inputCategory, Category category) {
+        Category categoryResult = validator.correctCategory(inputCategory);
 
         assertThat(categoryResult).isEqualTo(category);
     }
