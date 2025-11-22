@@ -62,4 +62,13 @@ public class ValidatorTest {
 
         assertThat(categoryResult).isEqualTo(category);
     }
+
+    @DisplayName("빈값이나 공백을 입력 할 경우 예외 발생 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = {" ", ""})
+    void canNotInputBlank(String inputCategory) {
+        assertThatThrownBy(() -> validator.correctCategory(inputCategory))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.NOT_BLANK.getMessage());
+    }
 }
