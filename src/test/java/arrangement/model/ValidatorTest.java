@@ -44,4 +44,13 @@ public class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.OPTION_RANGE.getMessage());
     }
+
+    @DisplayName("입력값이 카테고리가 아닐 경우 예외 발생 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = {"AAA", "BBB", "CCC", "DDD"})
+    void isNotInputCategory(String categoryName) {
+        assertThatThrownBy(() -> validator.correctCategory(categoryName))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.INVALID_CATEGORY.getMessage());
+    }
 }
