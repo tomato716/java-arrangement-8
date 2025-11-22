@@ -35,4 +35,13 @@ public class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.NOT_NUMBER.getMessage());
     }
+
+    @DisplayName("옵션으로 숫자가 아닌 값을 입력했을 때 예외 발생 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = {"-1", "0", "5", "6"})
+    void isOverOptionNumberRange(String inputOptionNumber) {
+        assertThatThrownBy(() -> validator.selectNumber(inputOptionNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.OPTION_RANGE.getMessage());
+    }
 }
