@@ -1,11 +1,14 @@
 package arrangement.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import arrangement.constants.ErrorMessage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class ValidatorTest {
     private Validator validator;
@@ -22,5 +25,14 @@ public class ValidatorTest {
         int optionNumberResult = validator.selectNumber(inputOptionNumber);
 
         assertThat(optionNumberResult).isEqualTo(expectResult);
+    }
+
+    @DisplayName("옵션으로 숫자가 아닌 값을 입력했을 때 예외 발생 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = {"a", "as", "bfd", "banana"})
+    void isNotInteger(String inputOptionNumber) {
+        assertThatThrownBy(() -> validator.selectNumber(inputOptionNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.NOT_NUMBER.getMessage());
     }
 }
