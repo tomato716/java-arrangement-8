@@ -54,6 +54,15 @@ public class ValidatorTest {
                 .hasMessage(ErrorMessage.INVALID_CATEGORY.getMessage());
     }
 
+    @DisplayName("올바른 카테고리를 입력할 경우 동작하는지 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"MEAT,MEAT", "VEGETABLE,VEGETABLE", "FRUIT,FRUIT", "DRINK,DRINK"})
+    void isCorrectInputCategoryName(String inputCategory, Category category) {
+        Category categoryResult = validator.correctCategory(inputCategory);
+
+        assertThat(categoryResult).isEqualTo(category);
+    }
+
     @DisplayName("카테고리 입력값이 소문자일 경우 올바르게 동작하는지 테스트")
     @ParameterizedTest
     @CsvSource(value = {"meat,MEAT", "vegetable,VEGETABLE", "fruit,FRUIT", "drink,DRINK"})
