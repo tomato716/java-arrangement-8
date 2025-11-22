@@ -46,18 +46,13 @@ public class MissionOption implements Option {
     private void tryRemoveMission(String input) {
         List<String> categoryAndItems = splitCategoryAndItem(input);
 
-        String inputCategory = StringUpperCase(categoryAndItems.getFirst());
-        Category category = validator.correctCategory(inputCategory);
+        Category category = validator.correctCategory(categoryAndItems.getFirst());
 
         List<String> items = splitInput(categoryAndItems.getLast(), Constants.ITEM_DELIMITER);
         validator.itemsIsBlank(items);
         validator.NotTypoItems(category, items);
 
         removeAndSaveItems(category, items);
-    }
-
-    private String StringUpperCase(String input) {
-        return input.toUpperCase();
     }
 
     private void removeAndSaveItems(Category category, List<String> inputItems) {

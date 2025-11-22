@@ -29,13 +29,18 @@ public class Validator {
 
     public Category correctCategory(String inputCategory) {
         isNotBlank(inputCategory);
-        Category categoryName = Category.includeCategory(inputCategory);
+        String inputCategoryUpperCase = StringUpperCase(inputCategory);
+        Category categoryName = Category.includeCategory(inputCategoryUpperCase);
 
         if (categoryName == null) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_CATEGORY.getMessage());
         }
 
         return categoryName;
+    }
+
+    private String StringUpperCase(String input) {
+        return input.toUpperCase();
     }
 
     private void isNotBlank(String input) {
