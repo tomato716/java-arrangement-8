@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import arrangement.constants.ErrorMessage;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -77,6 +78,16 @@ public class ValidatorTest {
     @ValueSource(strings = {" ", ""})
     void canNotBlankInputCategory(String inputCategory) {
         assertThatThrownBy(() -> validator.correctCategory(inputCategory))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.NOT_BLANK.getMessage());
+    }
+
+    @DisplayName("아이템 목록 중 공백이나 빈값을 넣을 경우 예외 발생 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = {"", " ", "        "})
+    void canNotBlankInputItems(String inputItems) {
+
+        assertThatThrownBy(() -> validator.itemsIsBlank(List.of(inputItems)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.NOT_BLANK.getMessage());
     }
