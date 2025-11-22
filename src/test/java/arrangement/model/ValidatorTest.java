@@ -53,4 +53,13 @@ public class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.INVALID_CATEGORY.getMessage());
     }
+
+    @DisplayName("카테고리 입력값이 소문자일 경우 올바르게 동작하는지 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"meat,MEAT", "vegetable,VEGETABLE", "fruit,FRUIT", "drink,DRINK"})
+    void ChangeUpperCase(String categoryName, Category category) {
+        Category categoryResult = validator.correctCategory(categoryName);
+
+        assertThat(categoryResult).isEqualTo(category);
+    }
 }
