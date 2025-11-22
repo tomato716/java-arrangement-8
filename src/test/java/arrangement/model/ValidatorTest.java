@@ -100,4 +100,13 @@ public class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.DASH_ONLY_ONE.getMessage());
     }
+
+    @DisplayName("카테고리에 없는 아이템을 입력하면 예외 발생 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"MEAT,상추", "VEGETABLE,돼지고기", "DRINK,사과", "FRUIT,콜라", "MEAT,가나다"})
+    void isNotIncludeItemsInCategory(Category category, String items) {
+
+        assertThatThrownBy(() -> validator.NotTypoItems(category, List.of(items)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
