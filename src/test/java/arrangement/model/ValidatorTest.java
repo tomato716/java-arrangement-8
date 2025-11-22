@@ -91,4 +91,13 @@ public class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.NOT_BLANK.getMessage());
     }
+
+    @DisplayName("카테고리와 아이템들을 입력할 때 -(대쉬)가 하나가 아니라면 예외 발생 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = {"MEAT -- 소고기", "MEAT : 소고기", "MEAT - 소고기 - 돼지고기"})
+    void mustOnlyDashOne(String inputCategoryAndItems) {
+        assertThatThrownBy(() -> validator.dashOnlyOne(inputCategoryAndItems))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.DASH_ONLY_ONE.getMessage());
+    }
 }
