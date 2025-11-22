@@ -47,7 +47,7 @@ public class ValidatorTest {
 
     @DisplayName("입력값이 카테고리가 아닐 경우 예외 발생 테스트")
     @ParameterizedTest
-    @ValueSource(strings = {"AAA", "BBB", "CCC", "DDD"})
+    @ValueSource(strings = {"AAA", "123", "ccc", "가나다"})
     void isNotInputCategory(String inputCategory) {
         assertThatThrownBy(() -> validator.correctCategory(inputCategory))
                 .isInstanceOf(IllegalArgumentException.class)
