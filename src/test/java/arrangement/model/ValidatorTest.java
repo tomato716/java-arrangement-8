@@ -105,9 +105,9 @@ public class ValidatorTest {
     @ParameterizedTest
     @CsvSource(value = {"MEAT,상추", "VEGETABLE,돼지고기", "DRINK,사과", "FRUIT,콜라", "MEAT,가나다"})
     void isNotIncludeItemsInCategory(Category category, String items) {
-
         assertThatThrownBy(() -> validator.NotTypoItems(category, List.of(items)))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.INVALID_ITEM.getMessage());
     }
 
     @DisplayName("미션 입력 형식이 -(대쉬)로 시작할 경우 예외 발생 테스트")
