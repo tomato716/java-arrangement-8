@@ -8,7 +8,8 @@ public enum ErrorMessage {
     NOT_BLANK("공백이나 빈값은 입력할 수 없습니다."),
     INVALID_ITEM("아이템을 잘못 입력했습니다."),
     DASH_ONLY_ONE("카테고리와 아이템은 -(대쉬) 하나로 구분하여 입력하세요."),
-    NOT_INCLUDE_MISSION("미션에 존재하지 않는 아이템을 입력했습니다.");
+    NOT_INCLUDE_MISSION("미션에 존재하지 않는 아이템을 입력했습니다."),
+    INVALID_FORM("입력형식이 잘못 되었습니다.");
 
     private static final String PREFIX = "[ERROR] ";
     private final String message;

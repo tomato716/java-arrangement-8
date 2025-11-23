@@ -44,6 +44,7 @@ public class MissionOption implements Option {
     }
 
     private void tryRemoveMission(String input) {
+        validator.doNotStartDash(input);
         List<String> categoryAndItems = splitCategoryAndItem(input);
 
         Category category = validator.correctCategory(categoryAndItems.getFirst());

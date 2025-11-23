@@ -70,4 +70,10 @@ public class Validator {
             }
         }
     }
+
+    public void doNotStartDash(String input) {
+        if (input.startsWith(Constants.CATEGORY_ITEM_DELIMITER)) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_FORM.getMessage());
+        }
+    }
 }
