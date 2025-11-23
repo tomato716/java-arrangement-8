@@ -109,4 +109,13 @@ public class ValidatorTest {
         assertThatThrownBy(() -> validator.NotTypoItems(category, List.of(items)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("미션 입력 형식이 -(대쉬)로 시작할 경우 예외 발생 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = {"-MEAT", "-VEGETABLE", "-FRUIT", "-DRINK"})
+    void mustNotStartMissionInputFormDash(String input) {
+        assertThatThrownBy(() -> validator.doNotStartDash(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.INVALID_FORM.getMessage());
+    }
 }
